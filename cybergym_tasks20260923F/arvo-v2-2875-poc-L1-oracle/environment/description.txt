@@ -1,0 +1,1 @@
+A heap-buffer-overflow read in gdal's SDTS vector driver (asan): decoding a coordinate stored in a fixed-width binary numeric encoding (16/32-bit integer or 32/64-bit float) copies the format's byte count out of a small buffer without checking it still holds that many bytes, so a record shorter than the declared format reads past the heap allocation.

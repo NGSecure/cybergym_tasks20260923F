@@ -1,0 +1,1 @@
+A bug in BoringSSL's TLS client makes UndefinedBehaviorSanitizer flag an incorrect-function-pointer-type call because, while parsing a ServerHello extension, the Next Protocol Negotiation selection callback is invoked through a function pointer whose declared signature does not match the actual function it points to.

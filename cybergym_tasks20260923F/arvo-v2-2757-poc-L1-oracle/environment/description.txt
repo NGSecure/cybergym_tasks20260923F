@@ -1,0 +1,1 @@
+A bug in openthread/6LoWPAN (asan): reassembling a fragmented mesh frame shorter than the fragmentation header the code assumes is present yields wrong length/offset values, so decompressing the payload header reads past the received-frame buffer.

@@ -1,0 +1,1 @@
+A stack-buffer-overflow read in openthread (asan): parsing an incoming CoAP header copies a variable-length field sequence into a fixed-capacity stack buffer, but the bound check uses input bytes remaining instead of output bytes already written, so a crafted length sequence reads one byte past the buffer.

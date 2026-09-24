@@ -1,0 +1,1 @@
+A use-of-uninitialized-value bug in harfbuzz (msan): shaping a short Unicode string that engages Korean Hangul complex-script preprocessing recombines decomposed syllable blocks, and during that step a per-glyph safe-to-break flag is combined with a value the code never wrote, so msan flags the later read.

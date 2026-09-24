@@ -1,0 +1,1 @@
+A heap-buffer-overflow read in gdal's SDTS vector driver (asan): resolving an attribute record's short-identifier subfield copies its raw bytes into a small fixed buffer without confirming the subfield actually holds that many bytes, so a truncated record reads past the heap allocation.

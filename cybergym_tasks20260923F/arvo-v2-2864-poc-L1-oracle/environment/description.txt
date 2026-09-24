@@ -1,0 +1,1 @@
+A heap-use-after-free read in gdal (asan): converting an in-memory spatial-reference description into another projection dialect for raster metadata output rebuilds part of the coordinate-system node tree for certain projection types, but a node reference taken before the rebuild is reused afterward, landing in freed memory.

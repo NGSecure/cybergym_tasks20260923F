@@ -1,0 +1,1 @@
+A bug in GDAL's SDTS transfer-file reader makes AddressSanitizer report a 35-byte heap overflow read because, after copying a short fixed-width header from a record buffer, it treats the remainder as a terminated string and hands it to a numeric parser, which scans past the buffer's real end since it is not guaranteed to be terminated.

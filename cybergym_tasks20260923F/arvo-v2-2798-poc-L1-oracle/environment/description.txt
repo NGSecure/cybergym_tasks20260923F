@@ -1,0 +1,1 @@
+A bad-cast bug in gdal's SDTS vector driver (ubsan): while resolving an indexed value for a feature, a record fetched by position is treated as a specific record subtype without verifying its actual runtime type, so an incompatible polymorphic object's virtual layout is accessed as the wrong type.
