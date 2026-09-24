@@ -1,0 +1,1 @@
+A bug in GDAL's E00 compressed-grid decoder makes UndefinedBehaviorSanitizer flag a negative array index because, when splicing an exponent suffix after the digits just decoded, it assumes at least a couple of digits are already in the output buffer without checking, so an input with too few digits computes a position before the buffer start.

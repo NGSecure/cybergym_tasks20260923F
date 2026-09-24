@@ -1,0 +1,1 @@
+A bug in GDAL's GeoTIFF coordinate-system reader makes AddressSanitizer report a stack-buffer-overflow write because it appends several recognized sub-fields of a vendor citation label into a fixed-size stack buffer without checking the growing result still fits.

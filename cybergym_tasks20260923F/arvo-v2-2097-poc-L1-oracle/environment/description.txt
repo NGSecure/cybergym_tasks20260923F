@@ -1,0 +1,1 @@
+A bug in FFmpeg's MJPEG decoder makes AddressSanitizer report a wild-address read because an inter-predicted picture is allowed to reconstruct blocks from an earlier reconstructed picture that is not actually valid in that context, so the pixel-copy step reads far outside the intended source region.

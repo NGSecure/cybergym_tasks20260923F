@@ -1,0 +1,1 @@
+A bug in GDAL's NTF (Ordnance Survey) vector driver makes AddressSanitizer report a global-buffer-overflow write because it formats a fixed-point decimal attribute value into a small fixed-capacity static buffer without verifying the converted string fits.

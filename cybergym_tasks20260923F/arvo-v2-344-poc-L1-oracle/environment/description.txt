@@ -1,0 +1,1 @@
+A heap-buffer-overflow read in the nlohmann/json library (ASan): the MessagePack decoder reads the next value's type marker without first checking that any input bytes remain, so a message truncated at a type-marker boundary reads one byte past the end of the input buffer.

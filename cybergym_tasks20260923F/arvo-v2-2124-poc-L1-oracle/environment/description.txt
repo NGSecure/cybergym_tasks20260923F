@@ -1,0 +1,1 @@
+A bug in libxml2's DTD element-declaration processing makes MemorySanitizer report a use of uninitialized value because, when a content model fails its determinism check, the diagnostic renders that model into a small fixed buffer and later code scans the result as a terminated string, reading bytes that were never written.

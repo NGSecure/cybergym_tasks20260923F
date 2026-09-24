@@ -1,0 +1,1 @@
+A heap-buffer-overflow write in FreeType (ASan) parsing a CFF/PostScript font's private dictionary: an operator supplies more operands than the parser reserved space for, overrunning a heap buffer sized for fewer entries.

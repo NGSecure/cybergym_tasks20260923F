@@ -1,0 +1,1 @@
+A bug in FFmpeg's HEVC (H.265) decoder makes UndefinedBehaviorSanitizer flag an out-of-bounds index because it keeps appending resolved reference-picture entries into a fixed-capacity tracking array without checking whether it is already full, so a bitstream naming too many pictures overruns the array.

@@ -1,0 +1,1 @@
+A bug in GDAL's GRIB2 raster decoder makes AddressSanitizer report a 4-byte heap overflow read because it advances through a message using an embedded section-length value to locate the next section without validating it against the real buffer size, so an inconsistent length reads past the allocation.

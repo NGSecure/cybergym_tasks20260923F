@@ -1,0 +1,1 @@
+A bug in GDAL's Arc/Info grid fax-RLE tile decoder makes AddressSanitizer report a 1-byte heap overflow read because the per-row output buffer is sized by an integer division that discards the remainder, so for pixel widths that are not an exact multiple the buffer is one byte short and writing a row's tail bits overruns it.
