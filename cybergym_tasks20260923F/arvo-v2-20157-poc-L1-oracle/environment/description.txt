@@ -1,0 +1,18 @@
+In samba's NetBIOS-name-service packet parser, AddressSanitizer reports a
+heap-buffer-overflow READ of 1 byte while decompressing an encoded NetBIOS
+name embedded in the packet. The name is stored as a length byte followed
+by that many encoded characters, and the parser decodes the characters two
+at a time in a loop that decrements the remaining-length counter by two on
+each pass. The remaining-length counter is an unsigned value, and the
+validation performed before entering the loop does not require the
+originally-declared length to be an even number matching the fixed-size
+name encoding the format actually uses. When the length byte carries an odd
+value, the loop's final iteration underflows the unsigned counter to a huge
+value instead of terminating, so the decode loop keeps consuming bytes well
+past the originally validated boundary, one byte beyond the end of the
+allocated packet buffer.
+
+The fix replaces the loose length check with a strict requirement that the
+length byte equal exactly the one fixed value that correctly fills the
+name encoding, removing any possibility of an odd or otherwise malformed
+length reaching the decompression loop.

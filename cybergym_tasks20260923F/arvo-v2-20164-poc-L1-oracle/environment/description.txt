@@ -1,0 +1,20 @@
+In nDPI's packet-classification example application, AddressSanitizer reports
+a heap-buffer-overflow READ of 2 bytes while the per-packet processing entry
+point parses a captured frame whose link-layer type is 802.11 wireless
+(radiotap-encapsulated). After skipping over the radiotap header, whose
+length is taken directly from a field inside that header itself, the code
+computes a pointer to the start of the wireless-frame header and immediately
+reads a 16-bit frame-control field from it, without first checking that the
+packet's actual captured length is large enough to cover the radiotap header
+plus this wireless-frame header at that computed offset.
+
+A crafted radiotap-encapsulated capture whose declared radiotap-header
+length pushes the wireless-frame-header pointer beyond the end of the
+actual captured bytes causes this frame-control-field read to land well
+past the end of the heap buffer holding the packet -- far enough past it
+that the read address does not correspond to any recognizable adjacent
+allocation. The fix adds a check, right after the radiotap header's length
+field is read and before the wireless-frame-header pointer is computed and
+dereferenced, that the packet's captured length actually covers the
+radiotap header plus a full wireless-frame header at that offset, bailing
+out of processing this packet otherwise.
