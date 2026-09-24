@@ -1,0 +1,1 @@
+A bug in BoringSSL's server-side TLS handshake makes UndefinedBehaviorSanitizer flag an incorrect-function-pointer-type call because an application ClientHello callback is invoked through a pointer whose declared handle type disagrees with the library's internal view, mismatching the actual function's signature.

@@ -1,0 +1,1 @@
+A bug in GDAL's CAD (DWG drawing) reader makes AddressSanitizer report a stack-use-after-return read because a short-lived buffer used for a byte-order conversion of a numeric field is read back after the routine that owns it has already returned, yielding stale stack memory.

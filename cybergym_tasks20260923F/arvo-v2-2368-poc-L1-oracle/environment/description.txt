@@ -1,0 +1,1 @@
+A bug in GDAL's LERC raster codec makes AddressSanitizer report a 4-byte heap overflow read because the tile decompressor advances a raw pointer through the decoded per-pixel buffer with no bound tying it to how many values were actually produced, so a tile header claiming more pixels than were decoded walks past the buffer.

@@ -1,0 +1,1 @@
+A bug in file's soft-magic matching makes MemorySanitizer report a use of uninitialized value because a rule with an indirectly-defined target range computes its search length from two related sizes without rejecting the case where one exceeds the other, so a text search scans past the bytes actually filled in the buffer.

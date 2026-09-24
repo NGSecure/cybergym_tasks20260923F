@@ -1,0 +1,1 @@
+A bug in h2o's HTTP/2 proxy path makes AddressSanitizer report a null-pointer read because, after a request body has been fully delivered to the backend, a redundant extra body frame on the same stream is still dispatched to a body-delivery callback that has already been torn down.

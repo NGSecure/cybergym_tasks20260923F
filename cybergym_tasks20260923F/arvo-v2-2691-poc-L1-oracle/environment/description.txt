@@ -1,0 +1,1 @@
+A bug in GDAL's embedded libtiff YCbCr-to-RGBA tile converter makes AddressSanitizer report a 1-byte heap overflow read because, for one chroma-subsampling ratio, the row-to-row stride is computed slightly too large, so the last row's final pixel group is read one byte past the decoded-tile buffer.

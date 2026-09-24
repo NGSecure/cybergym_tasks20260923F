@@ -1,0 +1,1 @@
+A bug in libpsl's public-suffix list parsing makes AddressSanitizer report a 4-byte heap overflow read because converting a non-ASCII domain label to punycode leaves the case-folded, normalized result buffer without a safe terminator, so a later scan for a delimiter reads past its end when the label holds a malformed multi-byte sequence.

@@ -1,0 +1,1 @@
+A bug in FFmpeg's AVX2 VP9 high-bit-depth intra-prediction makes AddressSanitizer report a wild-address write because a directional-prediction routine performs one store just outside the destination buffer it was given, corrupting adjacent memory.

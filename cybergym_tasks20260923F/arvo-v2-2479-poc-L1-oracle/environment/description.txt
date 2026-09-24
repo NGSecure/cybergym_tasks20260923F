@@ -1,0 +1,1 @@
+A bug in librawspeed's Mamiya/Phase One raw-photo metadata decoding makes AddressSanitizer report a wild-address read because it derives byte offsets straight from a self-describing tag/value table in the file and dereferences them without reliably bounding all of them, letting a crafted file walk the read pointer far outside its actual data.

@@ -1,0 +1,1 @@
+A bug in FFmpeg's SSE2 AAC-SBR (Spectral Band Replication) noise-blending routine makes AddressSanitizer report a wild-address read because a running index that can legitimately go negative is mishandled at register width and reinterpreted as a huge unsigned offset, so the table lookup reads at an arbitrary far address.
