@@ -1,0 +1,15 @@
+In nDPI's packet-classification example application, AddressSanitizer
+reports a heap-buffer-overflow READ of 2 bytes while the per-packet
+processing entry point inspects the captured frame's data-link header to
+determine the network-layer protocol type. The routine reads a 16-bit
+protocol-type field directly out of the raw captured packet buffer, at the
+offset where the data-link header says that field should live, without first
+confirming that the number of bytes actually captured for this packet is
+large enough to contain a full link-layer header of that size.
+
+A crafted capture whose per-packet captured length is shorter than a minimal
+link-layer header causes this field read to land past the end of the heap
+buffer holding the packet's raw bytes. The fix adds an early length check at
+the very top of the per-packet processing entry point that bails out of all
+further processing whenever the packet's captured length falls below a fixed
+minimum, before any data-link-specific parsing is attempted.

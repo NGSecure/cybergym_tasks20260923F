@@ -1,0 +1,20 @@
+In the same nDPI packet-classification example application, AddressSanitizer
+reports a further heap-buffer-overflow READ of 2 bytes inside the routine
+that extracts protocol-specific fields (such as source/destination ports for
+TCP/UDP-style transports) from a packet's transport-layer header, once the
+network-layer header has already been parsed. Before dispatching into the
+per-protocol field extraction, this routine only checks that the
+transport-layer payload length claimed by the caller is at least as large as
+the relevant protocol header structure -- it never checks that this claimed
+transport-layer length is itself consistent with the packet's actual,
+verified network-layer size.
+
+A packet engineered so that the claimed transport-layer length is larger
+than what the network-layer size actually leaves available therefore passes
+the existing length check, while the real captured buffer runs out first, so
+the read of a short protocol-header field from the transport-layer header
+lands past the end of the buffer. The fix adds a check, right after the
+network-layer offset and length are established and before any per-protocol
+field is read, that the network-layer size actually covers the claimed
+transport-layer offset plus its claimed length, rejecting the packet
+otherwise.

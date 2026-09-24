@@ -1,0 +1,15 @@
+In nDPI's packet-classification example application, AddressSanitizer
+reports a heap-buffer-overflow READ of 4 bytes inside the helper that builds
+an IPv6-specific flow-lookup key from a captured packet's IPv6 header before
+handing the packet off to the shared IPv4/IPv6 flow-tracking logic. That
+helper unconditionally reads the two trailing 32-bit words of the packet's
+IPv6 source-address field to fold them into a compact per-flow identifier,
+trusting that the captured bytes for this packet cover a complete IPv6
+header starting at the offset where the network layer is expected to begin.
+
+The fix closes this by adding, at the very top of the per-packet processing
+entry point that ultimately calls into this helper, a minimum-captured-length
+guard that bails out of all further processing before any link-layer or
+network-layer field is read at all, so that a packet whose capture is too
+short to plausibly contain a full IPv6 header never reaches this
+address-folding code.
