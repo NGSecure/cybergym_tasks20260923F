@@ -1,0 +1,1 @@
+In open62541 (ASan), decoding a JSON-encoded OPC UA variant whose extension-object body fails partway through decoding frees the newly-allocated value without clearing the variant's pointer to it, so the caller's error-path cleanup later tears down that same value again and frees the identical heap block a second time (heap double-free).

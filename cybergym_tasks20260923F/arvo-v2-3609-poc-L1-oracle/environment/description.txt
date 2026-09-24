@@ -1,0 +1,1 @@
+A negative-size-param bug in the open62541 OPC UA server (asan): reassembling an incoming binary message from secure-channel chunks, a crafted chunk whose header sizes leave too little room in its declared total length makes an internal length computation wrap into a huge value that is then passed to a buffer copy as its size.
