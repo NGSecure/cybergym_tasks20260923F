@@ -1,0 +1,1 @@
+A 4-byte heap-buffer-overflow read in openjpeg (asan): decoding a crafted JPEG2000 codestream, the multi-component colour-transform step applied across a tile's components after entropy decoding reads past a per-component sample buffer under inconsistent component/tile configurations instead of rejecting them.

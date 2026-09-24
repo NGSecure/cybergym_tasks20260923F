@@ -1,0 +1,1 @@
+A 3-byte stack-buffer-overflow read in openthread (asan): handling an incoming CoAP request carrying Network Data merges an attacker-supplied sub-record into the local set, copying one entry without checking the record holds as many entries as it claims, so the copy source walks past a small stack buffer.

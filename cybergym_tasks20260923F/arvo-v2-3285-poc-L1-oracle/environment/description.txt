@@ -1,0 +1,1 @@
+A 1-byte stack-buffer-overflow read in openthread (asan): a CoAP request submitting new commissioning data is copied into a small fixed buffer and iterated entry by entry using each entry's attacker-controlled self-reported length, without verifying the next entry's position stays in bounds, so the read locating the following entry steps one byte past the buffer.

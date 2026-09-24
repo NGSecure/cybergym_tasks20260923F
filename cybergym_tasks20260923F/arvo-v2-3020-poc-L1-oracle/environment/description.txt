@@ -1,0 +1,1 @@
+A heap-buffer-overflow read in gdal (asan): translating a raster into a GeoTIFF whose reduced-resolution overviews are JPEG-compressed surfaces the invalid read only during final teardown of the output dataset's in-memory band and cache objects, not while pixel data is written.

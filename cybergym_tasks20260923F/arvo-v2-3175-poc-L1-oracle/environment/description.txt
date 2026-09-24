@@ -1,0 +1,1 @@
+An index-out-of-bounds read in ffmpeg's HEVC/H.265 decoder (ubsan): decoding transform/residual data, a per-block chroma quantization-parameter offset is looked up with an index derived from earlier parameter-set fields without a range check, reading past a small fixed table.

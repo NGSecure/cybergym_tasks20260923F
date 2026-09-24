@@ -1,0 +1,1 @@
+A 2-byte use-after-poison read in librawspeed (asan): decoding a Samsung SRW raw with block-based predictive compression processes rows in fixed pixel groups, and a crafted row width whose final group runs past the row boundary reads from the row above at a column inside the buffer but past the allocator-validated region.
