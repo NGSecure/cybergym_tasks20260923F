@@ -1,0 +1,1 @@
+A 16-byte heap-use-after-free read in wpantund (asan): while handling a Spinel-protocol notification from the attached NCP radio, it formats an IPv6 address for a diagnostic log using address-tracking state already released by an earlier sequence of NCP-originated property updates that left stale freed data reachable.

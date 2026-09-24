@@ -1,0 +1,1 @@
+A 1-byte heap-buffer-overflow read in librawspeed (asan): after the file's optional per-pixel correction opcodes are parsed, an image-reconstruction step consults a lookup structure sized to the image's own pixel dimensions and reads one byte out of bounds, deterministically and independent of any uninitialized state.

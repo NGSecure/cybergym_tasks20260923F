@@ -1,0 +1,1 @@
+A 4-byte heap-buffer-overflow read in openjpeg (asan): during the multi-component colour transform of a 3-channel tile decode, the read size is derived from one channel's resolution geometry and applied to the other channels without checking they match, so a channel with a smaller resolution buffer is read past its allocation.

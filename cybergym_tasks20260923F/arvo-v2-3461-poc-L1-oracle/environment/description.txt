@@ -1,0 +1,1 @@
+A 2-byte use-after-poison write in librawspeed (asan) decoding a Nikon NEF raw: the lossy Huffman-predictive pixel decoder reconstructs each row two pixels at a time and unconditionally writes the first pixel pair before the rest, so a crafted row width that is too narrow or odd pushes that first write past the row's allocation into the poisoned guard region.

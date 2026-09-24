@@ -1,0 +1,1 @@
+An index-out-of-bounds read in proj.4 (ubsan): during an inverse coordinate transformation, a pipeline step converting a time coordinate between units indexes a small internal table out of range specifically when only one side of the conversion has a unit configured and the other is left unset.

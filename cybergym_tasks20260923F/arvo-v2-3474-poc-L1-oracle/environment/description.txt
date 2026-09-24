@@ -1,0 +1,1 @@
+An array-index-out-of-bounds read in openssl (ubsan): on the client side of a TLS handshake, a curve identifier taken from the peer's key-exchange message indexes a small fixed internal table without a range check, so a peer advertising an unusual elliptic curve pushes the index past the table.

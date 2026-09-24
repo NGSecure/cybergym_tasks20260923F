@@ -1,0 +1,1 @@
+A use-of-uninitialized-value warning in librawspeed (msan): on the uncompressed raw-pixel decode path, malformed strip/bit-depth metadata leaves part of the freshly allocated output buffer unwritten, and a later runtime consistency scan reads those still-unwritten bytes.

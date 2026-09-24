@@ -1,0 +1,1 @@
+A use-of-uninitialized-value warning in librawspeed (msan): decoding a Hasselblad 3FR raw whose compressed pixel data is malformed, the decoder tolerates the failure and returns the output buffer as if complete though decompression stopped early, and a later consistency scan reads the unwritten bytes.
