@@ -1,0 +1,1 @@
+A heap-buffer-overflow write in zstd (asan): using the low-level block-oriented compression API, an internal compression-parameter-selection step underestimates the needed working-window size for certain uncommon input sizes, so buffers sized to that underestimate are overrun when the block's final leftover bytes are stored.

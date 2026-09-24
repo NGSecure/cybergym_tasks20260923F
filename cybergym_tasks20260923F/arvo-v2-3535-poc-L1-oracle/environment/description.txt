@@ -1,0 +1,1 @@
+A 4-byte global-buffer-overflow read in wireshark (asan): dissecting a GTPv2 mobile-core signalling message, a value taken directly from an information element's type field indexes a fixed-size internal subtree-state table, and a specific legal IE type pushes the index one entry past the table.

@@ -1,0 +1,1 @@
+A use-of-uninitialized-value in harfbuzz (msan): shaping a right-to-left cursively-joining script and reordering combining marks, a helper merging glyph-cluster tracking fields is applied to the wrong side of the internal glyph buffer -- a side still holding grown-but-never-populated capacity -- so msan flags reading that unwritten memory.

@@ -1,0 +1,1 @@
+A 2-byte use-after-poison read in librawspeed (asan) decoding a Samsung SRW raw: each row is rebuilt from differences against reference pixels one or two rows above using per-16-pixel-block offset candidates, and a crafted image shifting the offset forward for the block at the row's tail end runs the reference pointer past the freshly allocated poisoned row buffer.
