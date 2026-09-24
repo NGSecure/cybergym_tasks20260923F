@@ -1,1 +1,0 @@
-A use-of-uninitialized-value in librawspeed (msan): a legacy variant of the Canon CR2 raw decode path allocates an output buffer then calls a decompression routine that hits a length/consistency error partway through, but the surrounding code swallows the error and continues, leaving the buffer's tail unwritten for later reads.

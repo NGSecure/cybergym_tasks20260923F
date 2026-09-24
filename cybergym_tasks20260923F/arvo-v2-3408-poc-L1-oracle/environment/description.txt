@@ -1,1 +1,0 @@
-A 16-byte stack-buffer-overflow read in wireshark (asan): registering a newly-seen ZigBee network security key into an internal key store while decoding a crafted ZigBee security command compares against stored keys by reading 16 bytes from a too-small stack location instead of the packet's actual key bytes, running past that stack allocation.

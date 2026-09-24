@@ -1,1 +1,0 @@
-A wild-address SEGV read in proj.4 (asan): on the inverse transformation path, converting an observation between two time-axis measurement units indexes a small fixed table with an unvalidated selection index, reading far outside any object the library legitimately owns.

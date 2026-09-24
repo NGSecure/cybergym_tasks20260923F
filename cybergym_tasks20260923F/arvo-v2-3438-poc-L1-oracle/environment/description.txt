@@ -1,1 +1,0 @@
-A use-of-uninitialized-value warning in librawspeed (msan): decoding an intentionally truncated or malformed proprietary raw container leaves the destination image buffer only partially written, and later code reads the unwritten bytes before every byte has been populated.

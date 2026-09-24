@@ -1,1 +1,0 @@
-A use-of-uninitialized-value in librawspeed (msan): decoding a crafted Olympus ORF raw, the vendor decode path only partially reconstructs the sensor data, then a later step verifying the output buffer was fully populated reads bytes that were never written.

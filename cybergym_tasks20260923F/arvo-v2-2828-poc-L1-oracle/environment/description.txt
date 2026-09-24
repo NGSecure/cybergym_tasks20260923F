@@ -1,1 +1,0 @@
-A negative-size-param bug in gdal's OGR SDTS driver (asan): decoding a line-geometry record's coordinate-reference subfields loops pulling successive subfields without checking whether the record buffer still has bytes left, so once it is exhausted the size passed to a memory copy wraps negative.

@@ -1,1 +1,0 @@
-A heap-use-after-free read (8 bytes) in proj.4 (asan): initializing a geostationary-satellite projection definition, the setup routine's error path for certain invalid parameters tears down the projection object and its per-instance state but then falls through and keeps reading fields out of the structures it just freed.

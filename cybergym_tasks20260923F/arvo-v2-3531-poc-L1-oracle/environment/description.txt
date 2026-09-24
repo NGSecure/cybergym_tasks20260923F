@@ -1,1 +1,0 @@
-A use-of-uninitialized-value warning in librawspeed (msan): a legacy Canon CRW raw packs pixels with a bit-level encoding assuming the width is a multiple of a small block size, and a crafted non-conforming width makes the bit-unpacking indexing skip some output bytes entirely, leaving them unwritten while the buffer is returned as complete for a later consistency scan.

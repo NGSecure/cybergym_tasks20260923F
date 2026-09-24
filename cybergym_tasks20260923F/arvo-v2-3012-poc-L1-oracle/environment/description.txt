@@ -1,1 +1,0 @@
-A 2-byte use-after-poison write in librawspeed (asan): decompressing pixel data from a crafted Olympus proprietary raw image uses row dimensions taken from the file header, and a degenerate dimension combination overruns a per-row output write into the allocator's poisoned padding.

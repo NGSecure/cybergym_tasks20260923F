@@ -1,1 +1,0 @@
-A use-of-uninitialized-value warning in librawspeed (msan): decoding a Nikon NEF raw whose lossy-compressed pixel data cannot be fully reconstructed from the offsets in the file's directory metadata, the pixel-reconstruction routine bails out partway and its error is silently discarded, so the output buffer is returned though not every byte was written.
